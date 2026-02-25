@@ -22,7 +22,7 @@ export default async function handler(req: any, res: any) {
 
     const { data, error } = await resend.emails.send({
       from: "onboarding@resend.dev", // keep this unless you verified a custom domain
-      to: "clubkituk@gmail.com",
+      to: "tjmath24@gmail.com",
       subject: `New Venue Application from ${venueName}`,
       reply_to: email,
       html: `
