@@ -1,0 +1,63 @@
+/* Custom Styles for CLUBKIT */
+
+:root {
+    --accent: #00FF00;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.font-display {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.skew-title {
+    transform: skewX(-10deg);
+}
+
+.text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    color: transparent;
+    transition: all 0.3s ease;
+}
+
+.text-stroke:hover {
+    color: white;
+    -webkit-text-stroke: 1px transparent;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; filter: blur(40px); }
+    50% { opacity: 0.8; filter: blur(60px); }
+}
+
+.glow-bg {
+    animation: pulse-glow 8s infinite ease-in-out;
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom Selection Color */
+::selection {
+    background-color: var(--accent);
+    color: black;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
