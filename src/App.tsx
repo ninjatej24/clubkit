@@ -281,28 +281,86 @@ export default function App() {
         </motion.div>
       </Section>
 
-      {/* Contact Section */}
+            {/* Contact Section */}
       <Section id="contact" className="bg-zinc-950 border-t border-white/5">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-accent text-xs font-bold uppercase tracking-widest mb-4 block">Partner With Us</span>
-            <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight uppercase">Let's Launch.</h2>
+            <span className="text-accent text-xs font-bold uppercase tracking-widest mb-4 block">
+              Partner With Us
+            </span>
+            <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight uppercase">
+              Let's Launch.
+            </h2>
           </div>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-8" onSubmit={(e) => e.preventDefault()}>
+
+          <form
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            onSubmit={async (e) => {
+              e.preventDefault();
+
+              const formData = new FormData(e.currentTarget);
+
+              const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  venueName: formData.get('venueName'),
+                  email: formData.get('email'),
+                  message: formData.get('message'),
+                }),
+              });
+
+              if (response.ok) {
+                alert("Application sent successfully.");
+                e.currentTarget.reset();
+              } else {
+                alert("Something went wrong. Try again.");
+              }
+            }}
+          >
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] uppercase font-bold tracking-widest opacity-50">Venue Name</label>
-              <input type="text" className="bg-white/5 border border-white/10 px-4 py-4 text-sm focus:outline-none focus:border-accent transition-colors placeholder:text-zinc-600 text-white" placeholder="e.g. The Basement" />
+              <label className="text-[10px] uppercase font-bold tracking-widest opacity-50">
+                Venue Name
+              </label>
+              <input
+                name="venueName"
+                type="text"
+                required
+                className="bg-white/5 border border-white/10 px-4 py-4 text-sm focus:outline-none focus:border-accent transition-colors text-white"
+                placeholder="e.g. The Basement"
+              />
             </div>
+
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] uppercase font-bold tracking-widest opacity-50">Contact Email</label>
-              <input type="email" className="bg-white/5 border border-white/10 px-4 py-4 text-sm focus:outline-none focus:border-accent transition-colors placeholder:text-zinc-600 text-white" placeholder="e.g. owner@venue.com" />
+              <label className="text-[10px] uppercase font-bold tracking-widest opacity-50">
+                Contact Email
+              </label>
+              <input
+                name="email"
+                type="email"
+                required
+                className="bg-white/5 border border-white/10 px-4 py-4 text-sm focus:outline-none focus:border-accent transition-colors text-white"
+                placeholder="e.g. owner@venue.com"
+              />
             </div>
+
             <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-[10px] uppercase font-bold tracking-widest opacity-50">Message</label>
-              <textarea rows={4} className="bg-white/5 border border-white/10 px-4 py-4 text-sm focus:outline-none focus:border-accent transition-colors placeholder:text-zinc-600 text-white" placeholder="e.g. We host 500+ students every Friday and want to launch a custom hoodie drop..." />
+              <label className="text-[10px] uppercase font-bold tracking-widest opacity-50">
+                Message
+              </label>
+              <textarea
+                name="message"
+                rows={4}
+                required
+                className="bg-white/5 border border-white/10 px-4 py-4 text-sm focus:outline-none focus:border-accent transition-colors text-white"
+                placeholder="e.g. We host 500+ students every Friday..."
+              />
             </div>
+
             <div className="md:col-span-2">
-              <Button variant="primary" className="w-full justify-center">Submit Application</Button>
+              <Button type="submit" variant="primary" className="w-full justify-center">
+                Submit Application
+              </Button>
             </div>
           </form>
         </div>
