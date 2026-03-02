@@ -181,7 +181,7 @@ export default function App() {
           </div>
           <div className="relative aspect-square bg-zinc-900 overflow-hidden group">
             <img 
-              src="https://picsum.photos/seed/nightclub/1000/1000?grayscale" 
+              src="images/1000099686.jpg" 
               alt="Nightclub atmosphere" 
               className="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-1000"
               referrerPolicy="no-referrer"
@@ -199,7 +199,7 @@ export default function App() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative aspect-[4/5] bg-zinc-900 overflow-hidden group">
             <img 
-              src="https://picsum.photos/seed/streetwear/800/1000" 
+              src="images/1000099687.jpg"  
               alt="Streetwear model" 
               className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000"
               referrerPolicy="no-referrer"
